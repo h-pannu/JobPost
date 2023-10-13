@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JobPost.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,15 +8,8 @@ using System.Threading.Tasks;
 
 namespace JobPost.Models
 {
-    public class Job : INotifyPropertyChanged
+    public class Job : ChangeNotifier
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-		private void OnPropertyChanged(string propertyName)
-		{
-			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-		}
-
 		public Job()
 		{
 

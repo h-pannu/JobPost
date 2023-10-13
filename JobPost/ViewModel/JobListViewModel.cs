@@ -11,26 +11,20 @@ using System.Collections.ObjectModel;
 
 namespace JobPost.ViewModel
 {
-    public class JobListViewModel : INotifyPropertyChanged
+    public class JobListViewModel : ChangeNotifier
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
         public JobListViewModel()
         {
             CMDAdd = new AddCommand(this);
             Jobs = new ObservableCollection<Job>();
         }
 
-        private void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private Job _job;
 
-        public Job Job
+        public Job TargetJob
         {
             get { return _job; }
-            set { _job = value; OnPropertyChanged(nameof(Job)); }
+            set { _job = value; OnPropertyChanged(nameof(TargetJob)); }
         }
 
         public ICommand CMDAdd { get; set; }
@@ -46,7 +40,8 @@ namespace JobPost.ViewModel
 
         public void AddJob()
         {
-
+            Jobs.Add(TargetJob);  //Add it to collection
+            TargetJob = new Job(); //Resetting it
         }
     }
 }

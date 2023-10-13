@@ -27,7 +27,7 @@ namespace JobPost.Commands
         {
             //throw new NotImplementedException();
             //Do Something
-
+            _jobListViewModel.AddJob();
         }
     }
 }

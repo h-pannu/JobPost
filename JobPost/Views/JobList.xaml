@@ -33,29 +33,33 @@
         <StackPanel Margin="10" Background="AliceBlue">
             <ItemsControl>
                 <TextBlock Text="Job Title:"/>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text="{Binding TargetJob.Title}"/>
             </ItemsControl>
             <ItemsControl>
                 <TextBlock Text="Description:"/>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text ="{Binding TargetJob.Description}"/>
             </ItemsControl>
             <ItemsControl>
                 <TextBlock Text="Required Skills:"/>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text="{Binding TargetJob.SkillsReq}"/>
             </ItemsControl>
             <ItemsControl>
                 <TextBlock Text="Minimum Experience:"/>
-                <TextBox Grid.Column="1"/>
+                <TextBox Grid.Column="1" Text="{Binding TargetJob.MinExp}"/>
             </ItemsControl>
-            <Button Height="30" Width="120" Content="Post Job" Margin="0,15,0,15"/>
+            <Button Height="30" Command="{Binding CMDAdd}" Width="120" Content="Post Job" Margin="0,15,0,15"/>
         </StackPanel>
-        <ListView Grid.Row="1" Background="LightGray">
-            <WrapPanel>
-                <TextBlock Text="Job Title" Margin="0,0,15,0"/>
-                <TextBlock Text ="Description" Margin="0,0,15,0"/>
-                <TextBlock Text="Required Skills" Margin="0,0,15,0"/>
-                <TextBlock Text="minmum Experience" Margin="0,0,15,0"/>
-            </WrapPanel>
+        <ListView Grid.Row="1" Background="LightGray" ItemsSource="{Binding Jobs}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel>
+                        <TextBlock Text="{Binding Title}"  Margin="0,0,15,0"/>
+                        <TextBlock Text ="{Binding Description}" Margin="0,0,15,0"/>
+                        <TextBlock Text="{Binding SkillsReq}" Margin="0,0,15,0"/>
+                        <TextBlock Text="{Binding MinExp}" Margin="0,0,15,0"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
     
