@@ -15,7 +15,6 @@ namespace JobPost.ViewModel
     {
         public JobListViewModel()
         {
-            CMDAdd = new AddCommand(this);
             Jobs = new ObservableCollection<Job>();
         }
 
@@ -27,7 +26,7 @@ namespace JobPost.ViewModel
             set { _job = value; OnPropertyChanged(nameof(TargetJob)); }
         }
 
-        public ICommand CMDAdd { get; set; }
+        public ICommand CMDAdd => new RelayCommand(AddJob, null);
 
         private ObservableCollection<Job> _jobs;
 
@@ -38,7 +37,7 @@ namespace JobPost.ViewModel
         }
 
 
-        public void AddJob()
+        public void AddJob(object person)
         {
             Jobs.Add(TargetJob);  //Add it to collection
             TargetJob = new Job(); //Resetting it
