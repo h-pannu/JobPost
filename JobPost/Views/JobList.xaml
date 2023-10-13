@@ -1,0 +1,62 @@
+﻿<Window Background="LightSteelBlue" x:Class="JobPost.Views.JobList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JobPost.Views"
+        mc:Ignorable="d"
+        Title="JobList" Height="450" Width="400">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type ItemsControl}">
+                <Setter Property="Margin" Value="5"/>
+                <Setter Property="ItemsPanel">
+                    <Setter.Value>
+                        <ItemsPanelTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                            </Grid>
+                        </ItemsPanelTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10" Background="AliceBlue">
+            <ItemsControl>
+                <TextBlock Text="Job Title:"/>
+                <TextBox Grid.Column="1"/>
+            </ItemsControl>
+            <ItemsControl>
+                <TextBlock Text="Description:"/>
+                <TextBox Grid.Column="1"/>
+            </ItemsControl>
+            <ItemsControl>
+                <TextBlock Text="Required Skills:"/>
+                <TextBox Grid.Column="1"/>
+            </ItemsControl>
+            <ItemsControl>
+                <TextBlock Text="Minimum Experience:"/>
+                <TextBox Grid.Column="1"/>
+            </ItemsControl>
+            <Button Height="30" Width="120" Content="Post Job" Margin="0,15,0,15"/>
+        </StackPanel>
+        <ListView Grid.Row="1" Background="LightGray">
+            <WrapPanel>
+                <TextBlock Text="Job Title" Margin="0,0,15,0"/>
+                <TextBlock Text ="Description" Margin="0,0,15,0"/>
+                <TextBlock Text="Required Skills" Margin="0,0,15,0"/>
+                <TextBlock Text="minmum Experience" Margin="0,0,15,0"/>
+            </WrapPanel>
+        </ListView>
+    </Grid>
+    
+</Window>
