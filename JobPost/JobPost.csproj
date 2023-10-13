@@ -8,7 +8,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Commands\RelayCommand.cs" />
+    <Compile Remove="ViewModel\ChangeNotifier.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\" />
     <Folder Include="Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Haley.MVVM" Version="6.3.4.7" />
   </ItemGroup>
 
 </Project>

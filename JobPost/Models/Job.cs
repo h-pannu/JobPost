@@ -5,6 +5,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Haley.MVVM;
+using Haley.Abstractions;
+using Haley.Models;
 
 namespace JobPost.Models
 {

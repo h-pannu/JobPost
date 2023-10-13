@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using JobPost.Models;
-using JobPost.Commands;
+//using JobPost.Commands;
 using System.Collections.ObjectModel;
+using Haley.Models;
+using Haley.Abstractions;
+using Haley.MVVM;
 
 namespace JobPost.ViewModel
 {
@@ -16,6 +19,7 @@ namespace JobPost.ViewModel
         public JobListViewModel()
         {
             Jobs = new ObservableCollection<Job>();
+            TargetJob = new Job();
         }
 
         private Job _job;
@@ -26,7 +30,8 @@ namespace JobPost.ViewModel
             set { _job = value; OnPropertyChanged(nameof(TargetJob)); }
         }
 
-        public ICommand CMDAdd => new RelayCommand(AddJob, null);
+        public ICommand CMDAdd => new DelegateCommand(AddJob);
+        public ICommand CMDDelete => new DelegateCommand<Job>(DeleteJob);
 
         private ObservableCollection<Job> _jobs;
 
@@ -37,10 +42,18 @@ namespace JobPost.ViewModel
         }
 
 
-        public void AddJob(object person)
+        public void AddJob()
         {
             Jobs.Add(TargetJob);  //Add it to collection
             TargetJob = new Job(); //Resetting it
+        }
+
+        public void DeleteJob(Job obj)
+        {
+            if (obj == null) return;
+            if(!Jobs.Contains(obj)) return;
+
+            Jobs.Remove(obj);  //remove it from collection
         }
     }
 }

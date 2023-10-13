@@ -47,9 +47,13 @@
                 <TextBlock Text="Minimum Experience:"/>
                 <TextBox Grid.Column="1" Text="{Binding TargetJob.MinExp}"/>
             </ItemsControl>
-            <Button Height="30" Command="{Binding CMDAdd}" Width="120" Content="Post Job" Margin="0,15,0,15"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Height="30" Command="{Binding CMDAdd}" Width="120" Content="Post Job" Margin="0,15,0,15"/>
+                <Button Height="30" Width="120" Content="Delete Job" Margin="0,15,0,15"
+Command="{Binding CMDDelete}" CommandParameter="{Binding ElementName=lstJob, Path=SelectedItem}"/>
+            </StackPanel>
         </StackPanel>
-        <ListView Grid.Row="1" Background="LightGray" ItemsSource="{Binding Jobs}">
+        <ListView x:Name="lstJob" Grid.Row="1" Background="LightGray" ItemsSource="{Binding Jobs}" SelectionMode="Single">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <WrapPanel>
@@ -62,5 +66,5 @@
             </ListView.ItemTemplate>
         </ListView>
     </Grid>
-    
+
 </Window>
